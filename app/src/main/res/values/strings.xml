@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">android_labs</string>
+    <string name="title_activity_onboard">OnboardActivity</string>
+    <string name="hello_title">Добро пожаловать в ChatApp</string>
+    <string name="description_application">Тут должно быть какое-то описание</string>
+    <string name="back">Назад</string>
+    <string name="next">Далее</string>
+    <string name="email">Электронная почта</string>
+    <string name="password">Пароль</string>
+    <string name="sign">Войти</string>
+    <string name="name_sender">Имя отправителя</string>
+    <string name="last_message">Последнее сообщение</string>
+    <string name="time_send">Время отправки</string>
+</resources>
