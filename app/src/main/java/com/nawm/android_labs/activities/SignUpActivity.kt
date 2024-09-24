@@ -14,7 +14,6 @@ import com.nawm.android_labs.domain.User
 import com.nawm.android_labs.utils.RegistrationUtils
 
 class SignUpActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)

@@ -18,7 +18,6 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private val users: MutableMap<String, String> = mutableMapOf()
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -38,7 +37,7 @@ class SignInActivity : AppCompatActivity() {
             if(RegistrationUtils.isEmailValid(email)) {
                 if (password == users[email]) {
                     val intent =
-                        Intent(this@SignInActivity, OnboardActivity::class.java)
+                        Intent(this@SignInActivity, MainActivity::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this@SignInActivity, "Неверный email или пароль", Toast.LENGTH_SHORT).show()

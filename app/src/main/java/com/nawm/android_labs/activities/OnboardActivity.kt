@@ -19,16 +19,6 @@ class OnboardActivity : AppCompatActivity() {
             val intent =
                 Intent(
                     this@OnboardActivity,
-                    MainActivity::class.java
-                )
-            startActivity(intent)
-        }
-
-        val prevButton = findViewById<Button>(R.id.prev_button)
-        prevButton.setOnClickListener { view: View? ->
-            val intent =
-                Intent(
-                    this@OnboardActivity,
                     SignInActivity::class.java
                 )
             startActivity(intent)
