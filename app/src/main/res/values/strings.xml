@@ -6,8 +6,10 @@
     <string name="back">Назад</string>
     <string name="next">Далее</string>
     <string name="email">Электронная почта</string>
+    <string name="name">Имя пользователя</string>
     <string name="password">Пароль</string>
     <string name="sign">Войти</string>
+    <string name="registration">Зарегистрироваться</string>
     <string name="name_sender">Имя отправителя</string>
     <string name="last_message">Последнее сообщение</string>
     <string name="time_send">Время отправки</string>

@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Android_labs"
         tools:targetApi="31">
         <activity
-            android:name=".OnboardActivity"
+            android:name=".activities.OnboardActivity"
             android:exported="false"
             android:label="@string/title_activity_onboard"
             android:theme="@style/Theme.Android_labs"
             tools:ignore="DuplicateActivity" />|
         <activity
-            android:name=".SignInActivity"
+            android:name=".activities.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.SignUpActivity"/>
     </application>
 
 </manifest>

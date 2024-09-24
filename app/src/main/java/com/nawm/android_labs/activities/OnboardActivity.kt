@@ -1,4 +1,4 @@
-package com.nawm.android_labs
+package com.nawm.android_labs.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.nawm.android_labs.R
 
 class OnboardActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")

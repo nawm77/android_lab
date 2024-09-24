@@ -1,4 +1,4 @@
-package com.nawm.android_labs
+package com.nawm.android_labs.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.nawm.android_labs.R
 import java.util.HashMap
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             arrayOf("sender", "message", "time"),
             intArrayOf(R.id.sender_name, R.id.last_message, R.id.message_time)
         )
-
         chatListView.adapter = adapter
     }
 
