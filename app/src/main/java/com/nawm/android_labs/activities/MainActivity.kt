@@ -1,39 +1,48 @@
 package com.nawm.android_labs.activities
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.ListView
-import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.nawm.android_labs.R
-import java.util.HashMap
+import com.nawm.android_labs.domain.User
+import com.nawm.android_labs.fragments.ChatFragment
+import com.nawm.android_labs.fragments.SignInFragment
+import com.nawm.android_labs.fragments.SignUpFragment
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val chatListView: ListView = findViewById(R.id.chat_recycler_view)
-        val senders: Array<String> = arrayOf("Tim Cook", "John Smith", "Jeremy Johnson")
-        val messages: Array<String> = arrayOf("Hey! I just presented new iPhone", "Welcome to our chat!", "wtf is coming up?")
-        val times: Array<String> = arrayOf("12:00", "12:10", "12:13")
-        val chatList: ArrayList<HashMap<String, String>> = ArrayList()
-        for (i in senders.indices) {
-            val chatMap = HashMap<String, String>()
-            chatMap["sender"] = senders[i]
-            chatMap["message"] = messages[i]
-            chatMap["time"] = times[i]
-            chatList.add(chatMap)
+
+        if (savedInstanceState == null) {
+            navigateToSignIn()
         }
-        val adapter = SimpleAdapter(
-            this,
-            chatList,
-            R.layout.chat_list_item,
-            arrayOf("sender", "message", "time"),
-            intArrayOf(R.id.sender_name, R.id.last_message, R.id.message_time)
-        )
-        chatListView.adapter = adapter
+    }
+
+    fun navigateToSignIn() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, SignInFragment())
+            .commit()
+    }
+
+    fun navigateToSignUp() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, SignUpFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun navigateToChat() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, ChatFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun onUserRegistered(user: User) {
+        Log.d("MainActivity", "User registered: $user")
+        navigateToSignIn()
     }
 
     override fun onStart() {

@@ -28,15 +28,6 @@
         android:layout_marginTop="8dp" />
 
     <Button
-        android:id="@+id/signin_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/black"/>
-
-    <Button
         android:id="@+id/signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
