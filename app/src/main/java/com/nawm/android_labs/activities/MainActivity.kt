@@ -6,17 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nawm.android_labs.R
 import com.nawm.android_labs.domain.User
 import com.nawm.android_labs.fragments.ChatFragment
+import com.nawm.android_labs.fragments.OnboardFragment
 import com.nawm.android_labs.fragments.SignInFragment
 import com.nawm.android_labs.fragments.SignUpFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SignUpFragment.OnUserRegisteredListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            navigateToSignIn()
+            navigateToOnboard()
         }
     }
 
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     fun navigateToSignUp() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, SignUpFragment())
-            .addToBackStack(null)
             .commit()
     }
 
@@ -40,8 +40,22 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun onUserRegistered(user: User) {
+    fun navigateToOnboard() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, OnboardFragment())
+            .commit()
+    }
+
+    override fun onUserRegistered(user: User) {
         Log.d("MainActivity", "User registered: $user")
+        val signInFragment = SignInFragment()
+        val args = Bundle()
+        args.putSerializable("user", user)
+        signInFragment.arguments = args
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, signInFragment)
+            .addToBackStack(null)
+            .commit()
         navigateToSignIn()
     }
 
