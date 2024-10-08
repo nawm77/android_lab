@@ -16,12 +16,6 @@ import com.nawm.android_labs.utils.RegistrationUtils
 import com.nawm.android_labs.activities.MainActivity
 
 class SignUpFragment : Fragment() {
-    private var onUserRegisteredListener: OnUserRegisteredListener? = null
-
-    interface OnUserRegisteredListener {
-        fun onUserRegistered(user: User)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,14 +69,5 @@ class SignUpFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d("Lifecycle", "onDestroy called in SignUpFragment")
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnUserRegisteredListener) {
-            onUserRegisteredListener = context
-        } else {
-            throw ClassCastException("$context must implement OnUserRegisteredListener")
-        }
     }
 }

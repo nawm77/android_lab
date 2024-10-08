@@ -36,6 +36,7 @@ class SignInFragment : Fragment() {
                 userNameInput.setText(user.userName)
                 emailInput.setText(user.email)
                 passwordInput.setText(user.password)
+                users[user.email] = user.password
             }
         }
         signInButton.setOnClickListener {

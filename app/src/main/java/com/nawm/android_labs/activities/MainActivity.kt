@@ -10,7 +10,7 @@ import com.nawm.android_labs.fragments.OnboardFragment
 import com.nawm.android_labs.fragments.SignInFragment
 import com.nawm.android_labs.fragments.SignUpFragment
 
-class MainActivity : AppCompatActivity(), SignUpFragment.OnUserRegisteredListener {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), SignUpFragment.OnUserRegisteredListene
             .commit()
     }
 
-    override fun onUserRegistered(user: User) {
+    fun onUserRegistered(user: User) {
         Log.d("MainActivity", "User registered: $user")
         val signInFragment = SignInFragment()
         val args = Bundle()
@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity(), SignUpFragment.OnUserRegisteredListene
             .replace(R.id.fragment_container, signInFragment)
             .addToBackStack(null)
             .commit()
-        navigateToSignIn()
     }
 
     override fun onStart() {
