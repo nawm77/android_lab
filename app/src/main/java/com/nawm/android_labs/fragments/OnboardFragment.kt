@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.nawm.android_labs.R
-import com.nawm.android_labs.activities.MainActivity
 
 class OnboardFragment : Fragment() {
     override fun onCreateView(
@@ -19,7 +19,7 @@ class OnboardFragment : Fragment() {
 
         val nextButton = view.findViewById<Button>(R.id.next_button)
         nextButton.setOnClickListener {
-            (requireActivity() as MainActivity).navigateToSignIn()
+            findNavController().navigate(R.id.SignInFragment)
         }
 
         return view

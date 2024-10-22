@@ -1,6 +1,5 @@
 package com.nawm.android_labs.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,10 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.nawm.android_labs.R
 import com.nawm.android_labs.domain.User
 import com.nawm.android_labs.utils.RegistrationUtils
-import com.nawm.android_labs.activities.MainActivity
 
 class SignUpFragment : Fragment() {
     override fun onCreateView(
@@ -31,9 +30,18 @@ class SignUpFragment : Fragment() {
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
             val name = nameInput.text.toString()
+
             if (RegistrationUtils.isEmailValid(email)) {
                 val user = User(name, email, password)
-                (requireActivity() as MainActivity).onUserRegistered(user)
+
+                val action = SignUpFragmentDirections.navigateFromSignUpToSignIn(user)
+                findNavController().navigate(action)
+
+                Toast.makeText(
+                    requireContext(),
+                    "Регистрация прошла успешно",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 Toast.makeText(
                     requireContext(),

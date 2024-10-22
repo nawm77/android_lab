@@ -9,10 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.nawm.android_labs.R
-import com.nawm.android_labs.domain.User
 import com.nawm.android_labs.utils.RegistrationUtils
-import com.nawm.android_labs.activities.MainActivity
 
 class SignInFragment : Fragment() {
     private lateinit var userNameInput: EditText
@@ -31,14 +30,17 @@ class SignInFragment : Fragment() {
         passwordInput = view.findViewById(R.id.password_input)
         val signInButton = view.findViewById<Button>(R.id.signin_button)
         val signUpButton = view.findViewById<Button>(R.id.signup_button)
-        arguments?.getSerializable("user")?.let { user ->
-            if (user is User) {
-                userNameInput.setText(user.userName)
-                emailInput.setText(user.email)
-                passwordInput.setText(user.password)
-                users[user.email] = user.password
+
+        arguments?.let { args ->
+            val user = SignInFragmentArgs.fromBundle(args).user
+            user?.let {
+                userNameInput.setText(it.userName)
+                emailInput.setText(it.email)
+                passwordInput.setText(it.password)
+                users[it.email] = it.password
             }
         }
+
         signInButton.setOnClickListener {
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
@@ -48,7 +50,8 @@ class SignInFragment : Fragment() {
 
             if (RegistrationUtils.isEmailValid(email)) {
                 if (password == users[email]) {
-                    (requireActivity() as MainActivity).navigateToChat()
+                    val action = SignInFragmentDirections.navigateFromSignInToChat()
+                    findNavController().navigate(action)
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -66,7 +69,8 @@ class SignInFragment : Fragment() {
         }
 
         signUpButton.setOnClickListener {
-            (requireActivity() as MainActivity).navigateToSignUp()
+            val action = SignInFragmentDirections.navigateFromSignInToSignUp()
+            findNavController().navigate(action)
         }
 
         return view

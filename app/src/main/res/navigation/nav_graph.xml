@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/OnBoardFragment">
+
+    <fragment
+        android:id="@+id/SignInFragment"
+        android:name="com.nawm.android_labs.fragments.SignInFragment"
+        android:label="SignInFragment">
+        <argument
+            android:name="user"
+            app:argType="com.nawm.android_labs.domain.User"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/navigateFromSignInToSignUp"
+            app:destination="@id/SignUpFragment" />
+        <action
+            android:id="@+id/navigateFromSignInToChat"
+            app:destination="@id/ChatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.nawm.android_labs.fragments.SignUpFragment"
+        android:label="SignUpFragment">
+        <action
+            android:id="@+id/navigateFromSignUpToSignIn"
+            app:destination="@id/SignInFragment">
+            <argument
+                android:name="user"
+                app:argType="com.nawm.android_labs.domain.User" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/OnBoardFragment"
+        android:name="com.nawm.android_labs.fragments.OnboardFragment"
+        android:label="OnBoardFragment">
+        <action
+            android:id="@+id/navigateFromOnBoardToSignIn"
+            app:destination="@id/SignInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ChatFragment"
+        android:name="com.nawm.android_labs.fragments.ChatFragment"
+        android:label="ChatFragment" />
+</navigation>
