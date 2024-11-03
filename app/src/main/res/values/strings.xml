@@ -13,4 +13,5 @@
     <string name="name_sender">Имя отправителя</string>
     <string name="last_message">Последнее сообщение</string>
     <string name="time_send">Время отправки</string>
+    <string name="get_data_with_retrofit">Получить данные</string>
 </resources>

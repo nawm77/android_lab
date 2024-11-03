@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nawm.android_labs.R
+import com.nawm.android_labs.databinding.ChatListItemBinding
 
 class ChatAdapter(
     private val senders: Array<String>,
@@ -13,16 +14,15 @@ class ChatAdapter(
     private val times: Array<String>
 ) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
-    class ChatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val senderName: TextView = itemView.findViewById(R.id.sender_name)
-        val lastMessage: TextView = itemView.findViewById(R.id.last_message)
-        val messageTime: TextView = itemView.findViewById(R.id.message_time)
+    class ChatViewHolder(chatListItemBinding: ChatListItemBinding) : RecyclerView.ViewHolder(chatListItemBinding.root) {
+        val senderName: TextView = chatListItemBinding.senderName
+        val lastMessage: TextView = chatListItemBinding.lastMessage
+        val messageTime: TextView = chatListItemBinding.messageTime
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.chat_list_item, parent, false)
-        return ChatViewHolder(itemView)
+        val binding = ChatListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ChatViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {

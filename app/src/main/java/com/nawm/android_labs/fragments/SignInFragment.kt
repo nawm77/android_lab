@@ -5,12 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.nawm.android_labs.R
+import com.nawm.android_labs.databinding.FragmentSignInBinding
 import com.nawm.android_labs.utils.RegistrationUtils
 
 class SignInFragment : Fragment() {
@@ -18,18 +17,19 @@ class SignInFragment : Fragment() {
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private val users: MutableMap<String, String> = mutableMapOf()
+    private var _binding: FragmentSignInBinding? = null
+    private val binding get() = _binding ?: throw RuntimeException("Binding is accessed before it is initialized or after it is destroyed")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_sign_in, container, false)
-
-        emailInput = view.findViewById(R.id.email_input)
-        userNameInput = view.findViewById(R.id.name_input)
-        passwordInput = view.findViewById(R.id.password_input)
-        val signInButton = view.findViewById<Button>(R.id.signin_button)
-        val signUpButton = view.findViewById<Button>(R.id.signup_button)
+        _binding = FragmentSignInBinding.inflate(inflater, container, false)
+        emailInput = binding.emailInput
+        userNameInput = binding.nameInput
+        passwordInput = binding.passwordInput
+        val signInButton = binding.signinButton
+        val signUpButton = binding.signupButton
 
         arguments?.let { args ->
             val user = SignInFragmentArgs.fromBundle(args).user
@@ -73,7 +73,7 @@ class SignInFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        return view
+        return binding.root
     }
 
     override fun onStart() {

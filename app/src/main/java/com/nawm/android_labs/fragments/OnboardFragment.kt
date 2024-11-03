@@ -5,24 +5,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nawm.android_labs.R
+import com.nawm.android_labs.databinding.FragmentOnboardBinding
 
 class OnboardFragment : Fragment() {
+    private var _binding: FragmentOnboardBinding? = null
+    private val binding get() = _binding ?: throw RuntimeException("Binding is accessed before it is initialized or after it is destroyed")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_onboard, container, false)
+        _binding = FragmentOnboardBinding.inflate(inflater, container, false)
 
-        val nextButton = view.findViewById<Button>(R.id.next_button)
-        nextButton.setOnClickListener {
-            findNavController().navigate(R.id.SignInFragment)
+        binding.nextButton.setOnClickListener {
+            val action = OnboardFragmentDirections.navigateFromOnBoardToSignIn(null)
+            findNavController().navigate(action)
         }
 
-        return view
+        return binding.root
     }
 
     override fun onStart() {

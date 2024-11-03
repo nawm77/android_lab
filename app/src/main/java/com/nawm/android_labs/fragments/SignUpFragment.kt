@@ -5,31 +5,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.nawm.android_labs.R
+import com.nawm.android_labs.databinding.FragmentSignUpBinding
 import com.nawm.android_labs.domain.User
 import com.nawm.android_labs.utils.RegistrationUtils
 
 class SignUpFragment : Fragment() {
+    private var _binding: FragmentSignUpBinding? = null
+    private val binding
+        get() = _binding ?: throw RuntimeException("Binding is accessed before it is initialized or after it is destroyed")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_sign_up, container, false)
+        _binding = FragmentSignUpBinding.inflate(inflater, container, false)
 
-        val emailInput = view.findViewById<EditText>(R.id.email_input)
-        val nameInput = view.findViewById<EditText>(R.id.name_input)
-        val passwordInput = view.findViewById<EditText>(R.id.password_input)
-        val signUpButton = view.findViewById<Button>(R.id.signup_button)
-
-        signUpButton.setOnClickListener {
-            val email = emailInput.text.toString()
-            val password = passwordInput.text.toString()
-            val name = nameInput.text.toString()
+        binding.signupButton.setOnClickListener {
+            val email = binding.emailInput.text.toString()
+            val password = binding.passwordInput.text.toString()
+            val name = binding.nameInput.text.toString()
 
             if (RegistrationUtils.isEmailValid(email)) {
                 val user = User(name, email, password)
@@ -51,7 +47,7 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        return view
+        return binding.root
     }
 
     override fun onStart() {

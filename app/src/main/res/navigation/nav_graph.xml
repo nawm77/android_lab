@@ -47,4 +47,9 @@
         android:id="@+id/ChatFragment"
         android:name="com.nawm.android_labs.fragments.ChatFragment"
         android:label="ChatFragment" />
+
+    <fragment
+        android:id="@+id/CharactersFragment"
+        android:name="com.nawm.android_labs.fragments.CharactersFragment"
+        android:label="CharacterFragment" />
 </navigation>
