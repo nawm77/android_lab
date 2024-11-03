@@ -35,9 +35,13 @@ class CharactersFragment : Fragment() {
         binding.charactersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val characters = retrofitNetwork.getCharacters()
-            charactersAdapter = CharactersAdapter(characters)
-            binding.charactersRecyclerView.adapter = charactersAdapter
+            try {
+                val characters = retrofitNetwork.getCharactersInRange(1151, 1200)
+                charactersAdapter = CharactersAdapter(characters)
+                binding.charactersRecyclerView.adapter = charactersAdapter
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

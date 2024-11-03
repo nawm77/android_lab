@@ -41,6 +41,9 @@
         <action
             android:id="@+id/navigateFromOnBoardToSignIn"
             app:destination="@id/SignInFragment" />
+        <action
+            android:id="@+id/navigateFromOnBoardToCharacters"
+            app:destination="@+id/CharactersFragment"/>
     </fragment>
 
     <fragment

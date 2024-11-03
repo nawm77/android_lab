@@ -5,6 +5,7 @@
     <string name="description_application">Тут должно быть какое-то описание</string>
     <string name="back">Назад</string>
     <string name="next">Далее</string>
+    <string name="character_view">Посмотреть героев</string>
     <string name="email">Электронная почта</string>
     <string name="name">Имя пользователя</string>
     <string name="password">Пароль</string>

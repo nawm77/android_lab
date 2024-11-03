@@ -50,7 +50,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.core.ktx)
     implementation(libs.fragment.ktx)
-    implementation(libs.converter.kotlinx.serialization)
+//    implementation(libs.converter.kotlinx.serialization)
 
     implementation(libs.kotlinx.serialization.json.v163)
     implementation(libs.navigation.fragment.ktx)
