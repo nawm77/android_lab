@@ -13,6 +13,8 @@ import com.nawm.android_labs.utils.RetrofitNetwork
 import kotlinx.coroutines.launch
 
 class CharactersFragment : Fragment() {
+    private val startIndex = 1151
+    private val endIndex = 1200
     private var _binding: FragmentCharactersBinding? = null
     private val binding
         get() = _binding ?: throw RuntimeException("Binding is accessed before it is initialized or after it is destroyed")
@@ -36,7 +38,7 @@ class CharactersFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             try {
-                val characters = retrofitNetwork.getCharactersInRange(1151, 1200)
+                val characters = retrofitNetwork.getCharactersInRange(startIndex, endIndex)
                 charactersAdapter = CharactersAdapter(characters)
                 binding.charactersRecyclerView.adapter = charactersAdapter
             } catch (e: Exception) {
