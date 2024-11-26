@@ -6,6 +6,9 @@
     <string name="back">Назад</string>
     <string name="next">Далее</string>
     <string name="character_view">Посмотреть героев</string>
+    <string name="settings_view">Посмотреть настройки</string>
+    <string name="delete_characters">Удалить файл с героями</string>
+    <string name="restore_characters">Восстановить файл с героями</string>
     <string name="email">Электронная почта</string>
     <string name="name">Имя пользователя</string>
     <string name="password">Пароль</string>
@@ -15,4 +18,8 @@
     <string name="last_message">Последнее сообщение</string>
     <string name="time_send">Время отправки</string>
     <string name="get_data_with_retrofit">Получить данные</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="save">Save</string>
+    <string name="file_is_not_found">Файл не найден</string>
 </resources>

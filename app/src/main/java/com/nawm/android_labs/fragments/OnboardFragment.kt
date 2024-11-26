@@ -29,6 +29,11 @@ class OnboardFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        binding.viewSettingsButton.setOnClickListener {
+            val action = OnboardFragmentDirections.navigateFromOnBoardToSettings()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 

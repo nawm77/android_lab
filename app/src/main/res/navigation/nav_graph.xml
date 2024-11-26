@@ -10,9 +10,9 @@
         android:label="SignInFragment">
         <argument
             android:name="user"
+            android:defaultValue="@null"
             app:argType="com.nawm.android_labs.domain.User"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
         <action
             android:id="@+id/navigateFromSignInToSignUp"
             app:destination="@id/SignUpFragment" />
@@ -43,7 +43,10 @@
             app:destination="@id/SignInFragment" />
         <action
             android:id="@+id/navigateFromOnBoardToCharacters"
-            app:destination="@+id/CharactersFragment"/>
+            app:destination="@+id/CharactersFragment" />
+        <action
+            android:id="@+id/navigateFromOnBoardToSettings"
+            app:destination="@+id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -55,4 +58,9 @@
         android:id="@+id/CharactersFragment"
         android:name="com.nawm.android_labs.fragments.CharactersFragment"
         android:label="CharacterFragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.nawm.android_labs.fragments.SettingsFragment"
+        android:label="Settings" />
 </navigation>
