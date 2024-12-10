@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nawm.android_labs.databinding.ListItemBinding
 import com.nawm.android_labs.domain.Character
+import com.nawm.android_labs.entity.CharacterEntity
 
-class CharactersAdapter(private val characters: List<Character>) :
+class CharactersAdapter(private val characters: MutableList<Character>) :
     RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
 
     inner class CharacterViewHolder(private val binding: ListItemBinding) :
@@ -33,4 +34,22 @@ class CharactersAdapter(private val characters: List<Character>) :
     }
 
     override fun getItemCount() = characters.size
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newCharacters: List<Character>) {
+        characters.addAll(newCharacters)
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearData() {
+        characters.clear()
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(newCharacters: List<Character>) {
+        characters.clear()
+        characters.addAll(newCharacters)
+        notifyDataSetChanged()
+    }
 }

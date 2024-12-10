@@ -1,5 +1,6 @@
 package com.nawm.android_labs.utils
 
+import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.*
@@ -18,6 +19,8 @@ interface RetrofitNetworkApi {
 
     @GET(value = "characters/{id}")
     suspend fun getCharacterById(@Path("id") id: Int): Character?
+
+    suspend fun getCharactersInRange(startId: Int, endId: Int): List<Character>
 }
 
 private const val NETWORK_BASE_URL = "https://www.anapioficeandfire.com/api/"
@@ -42,7 +45,8 @@ class RetrofitNetwork : RetrofitNetworkApi {
 
     override suspend fun getCharacterById(id: Int): Character? = networkApi.getCharacterById(id)
 
-    suspend fun getCharactersInRange(startId: Int, endId: Int): List<Character> = coroutineScope {
+    override suspend fun getCharactersInRange(startId: Int, endId: Int): List<Character> = coroutineScope {
+        Log.d("app", "Start $startId last $endId")
         (startId..endId).map { id ->
             async {
                 networkApi.getCharacterById(id)
